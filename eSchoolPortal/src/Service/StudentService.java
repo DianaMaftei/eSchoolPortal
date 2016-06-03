@@ -2,7 +2,7 @@ package Service;
 
 import java.util.Scanner;
 
-import entity.Subject;
+import entity.Course;
 import entity.Student;
 
 public class StudentService {
@@ -10,12 +10,12 @@ public class StudentService {
 	private Student currentStudent = (Student) Login.currentUser;
 
 	public void afiseazaOptiuniVizualizare() {
-		System.out.println("For which subject do you want to see the grades?");
-		System.out.println("For which subject do you want to see the absences?");
-		System.out.println("For which subject do you want to see the final grade?");
+		System.out.println("For which course do you want to see the grades?");
+		System.out.println("For which course do you want to see the absences?");
+		System.out.println("For which course do you want to see the final grade?");
 
-		System.out.println("These are the classes you are currently enrolled in: ");
-		for (Subject m : currentStudent.getSubjects()) {
+		System.out.println("These are the course you are currently enrolled in: ");
+		for (Course m : currentStudent.getCourses()) {
 			System.out.println(m.getName());
 		}
 		String subject = userInput.next();
@@ -24,27 +24,27 @@ public class StudentService {
 		displayAbsences(subject);
 		displayFinalGrade(subject);
 
-		System.out.println("You are not enrolled in that class.");
+		System.out.println("You are not enrolled in that course.");
 	}
 
-	public void displayGrades(String subject) {
-		for (int i = 0; i < currentStudent.getSubjects().size(); i++) {
-			if (subject.equalsIgnoreCase(currentStudent.getSubjects().get(i).getName())) {
-				System.out.printf("%s - ", currentStudent.getSubjects().get(i).getName());
-				System.out.printf(" %s \n", currentStudent.getSubjects().get(i).getGrades());
+	public void displayGrades(String course) {
+		for (int i = 0; i < currentStudent.getCourses().size(); i++) {
+			if (course.equalsIgnoreCase(currentStudent.getCourses().get(i).getName())) {
+				System.out.printf("%s - ", currentStudent.getCourses().get(i).getName());
+				System.out.printf(" %s \n", currentStudent.getCourses().get(i).getGrades());
 				return;
 			}
 		}
 	}
 
-	public void displayAbsences(String subject) {
-		for (int i = 0; i < currentStudent.getSubjects().size(); i++) {
-			if (subject.equalsIgnoreCase(currentStudent.getSubjects().get(i).getName())) {
-				System.out.printf("%s - ", currentStudent.getSubjects().get(i).getName());
+	public void displayAbsences(String course) {
+		for (int i = 0; i < currentStudent.getCourses().size(); i++) {
+			if (course.equalsIgnoreCase(currentStudent.getCourses().get(i).getName())) {
+				System.out.printf("%s - ", currentStudent.getCourses().get(i).getName());
 				int totalAbsente = 0;
-				for(int j = 0; j < currentStudent.getSubjects().get(i).getAbsences().size(); j++){
-					if (currentStudent.getSubjects().get(i).getAbsences().get(j).isAbsent()){
-						System.out.printf(" %s ", currentStudent.getSubjects().get(i).getAbsences().get(j));		
+				for(int j = 0; j < currentStudent.getCourses().get(i).getAbsences().size(); j++){
+					if (currentStudent.getCourses().get(i).getAbsences().get(j).isAbsent()){
+						System.out.printf(" %s ", currentStudent.getCourses().get(i).getAbsences().get(j));		
 						totalAbsente++;
 					}
 				}
@@ -58,14 +58,14 @@ public class StudentService {
 		}
 	}
 
-	public void displayFinalGrade(String subject) {
-		for (int i = 0; i < currentStudent.getSubjects().size(); i++) {
-			if (subject.equalsIgnoreCase(currentStudent.getSubjects().get(i).getName())) {
+	public void displayFinalGrade(String course) {
+		for (int i = 0; i < currentStudent.getCourses().size(); i++) {
+			if (course.equalsIgnoreCase(currentStudent.getCourses().get(i).getName())) {
 				double total = 0;
-				for(int j = 0; j < currentStudent.getSubjects().get(i).getGrades().size(); j++){
-					total += currentStudent.getSubjects().get(i).getGrades().get(j).getPoint();
+				for(int j = 0; j < currentStudent.getCourses().get(i).getGrades().size(); j++){
+					total += currentStudent.getCourses().get(i).getGrades().get(j).getPoint();
 				}
-				total = total / currentStudent.getSubjects().get(i).getGrades().size();
+				total = total / currentStudent.getCourses().get(i).getGrades().size();
 				System.out.printf("Your final grade is: %.2f \n", total);
 				return;
 			}

@@ -1,18 +1,18 @@
 package entity;
 
 public class Teacher extends User{
-	public String subject;
+	public String course;
 
-	public Teacher(String name, String userID, String password, String subject) {
+	public Teacher(String name, String userID, String password, String course) {
 		super(name, userID, password);
-		this.subject = subject;	}
+		this.course = course;	}
 
-	public String getSubject() {
-		return subject;
+	public String getCourse() {
+		return course;
 	}
 
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void setCourse(String subject) {
+		this.course = subject;
 	}
 	
 	

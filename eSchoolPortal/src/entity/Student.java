@@ -4,20 +4,20 @@ import java.util.ArrayList;
 
 public class Student extends User{
 	
-	private ArrayList<Subject> subjects;
+	private ArrayList<Course> courses;
 
 
 
 	public Student(String name, String userID, String password) {
 		super(name, userID, password);
-		this.subjects = new ArrayList<>();	}
+		this.courses = new ArrayList<>();	}
 
-	public ArrayList<Subject> getSubjects() {
-		return subjects;
+	public ArrayList<Course> getCourses() {
+		return courses;
 	}
 
-	public void setSubjects(ArrayList<Subject> subjects) {
-		this.subjects = subjects;
+	public void setCourses(ArrayList<Course> subjects) {
+		this.courses = subjects;
 	}
 
 	@Override

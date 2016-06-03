@@ -2,13 +2,13 @@ package entity;
 
 import java.util.ArrayList;
 
-public class Subject {
+public class Course {
 	private String name;
 	private String teacher;
 	private ArrayList<Grade> grades;
 	private ArrayList<Absence> absences;
 	
-	public Subject(String name, String teacher, ArrayList<Grade> grades, ArrayList<Absence> absences) {
+	public Course(String name, String teacher, ArrayList<Grade> grades, ArrayList<Absence> absences) {
 		this.name = name;
 		this.teacher = teacher;
 		this.grades = grades;

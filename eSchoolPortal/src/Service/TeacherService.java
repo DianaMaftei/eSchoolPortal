@@ -16,9 +16,9 @@ public class TeacherService {
 	public TeacherService() {
 		this.yourStudents = new ArrayList<Student>();
 		for (int i = 0; i < ePortalMain.currentDatabase.getStudentsList().size(); i++) {
-			for (int j = 0; j < ePortalMain.currentDatabase.getStudentsList().get(i).getSubjects().size(); j++) {
-				if (currentProfessor.getSubject().equalsIgnoreCase(
-						ePortalMain.currentDatabase.getStudentsList().get(i).getSubjects().get(j).getName())) {
+			for (int j = 0; j < ePortalMain.currentDatabase.getStudentsList().get(i).getCourses().size(); j++) {
+				if (currentProfessor.getCourse().equalsIgnoreCase(
+						ePortalMain.currentDatabase.getStudentsList().get(i).getCourses().get(j).getName())) {
 					yourStudents.add(ePortalMain.currentDatabase.getStudentsList().get(i));
 				}
 			}
@@ -51,13 +51,13 @@ public class TeacherService {
 				System.out.println("What grade do you want to add?");
 				int nota = userInput.nextInt();
 				int indexDeMaterie = 0;
-				for (int j = 0; j < student.getSubjects().size(); j++) {
-					if (currentProfessor.getSubject().equalsIgnoreCase(student.getSubjects().get(j).getName())) {
+				for (int j = 0; j < student.getCourses().size(); j++) {
+					if (currentProfessor.getCourse().equalsIgnoreCase(student.getCourses().get(j).getName())) {
 						indexDeMaterie = j;
 					}
 				}
 				// TODO get actual date
-				student.getSubjects().get(indexDeMaterie).getGrades().add(new Grade(nota, "today"));
+				student.getCourses().get(indexDeMaterie).getGrades().add(new Grade(nota, "today"));
 				return;
 			}
 		}
@@ -66,9 +66,9 @@ public class TeacherService {
 	}
 
 	private void displayAbsences(Student student, int subjectIndex) {
-		for (int x = 0; x < student.getSubjects().get(subjectIndex).getAbsences().size(); x++) {
-			if (student.getSubjects().get(subjectIndex).getAbsences().get(x).isAbsent()) {
-				System.out.printf("%s ", student.getSubjects().get(subjectIndex).getAbsences().get(x));
+		for (int x = 0; x < student.getCourses().get(subjectIndex).getAbsences().size(); x++) {
+			if (student.getCourses().get(subjectIndex).getAbsences().get(x).isAbsent()) {
+				System.out.printf("%s ", student.getCourses().get(subjectIndex).getAbsences().get(x));
 			}
 		}
 	}
@@ -91,8 +91,8 @@ public class TeacherService {
 			if (studentName.equalsIgnoreCase(yourStudents.get(i).getName())) {
 				Student student = yourStudents.get(i);
 				int subjectIndex = 0;
-				for (int j = 0; j < student.getSubjects().size(); j++) {
-					if (currentProfessor.getSubject().equalsIgnoreCase(student.getSubjects().get(j).getName())) {
+				for (int j = 0; j < student.getCourses().size(); j++) {
+					if (currentProfessor.getCourse().equalsIgnoreCase(student.getCourses().get(j).getName())) {
 						subjectIndex = j;
 					}
 				}
@@ -101,8 +101,8 @@ public class TeacherService {
 				System.out.println("Which absence do you want to mark? ");
 				String date = userInput.next();
 				Absence absence = new Absence(date);
-				student.getSubjects().get(subjectIndex).getAbsences()
-						.get(student.getSubjects().get(subjectIndex).getAbsences().indexOf(absence)).setAbsent(false);
+				student.getCourses().get(subjectIndex).getAbsences()
+						.get(student.getCourses().get(subjectIndex).getAbsences().indexOf(absence)).setAbsent(false);
 				System.out.println("The absence has been marked \"with leave\".");
 				displayAbsences(student, subjectIndex);
 				return;
