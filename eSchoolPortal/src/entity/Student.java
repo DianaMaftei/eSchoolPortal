@@ -4,24 +4,25 @@ import java.util.ArrayList;
 
 public class Student extends User{
 	
-	private ArrayList<Subject> materii;
+	private ArrayList<Subject> subjects;
 
-	public Student(String nume, String userName, String parola) {
-		super(nume, userName, parola);
-		this.materii = new ArrayList<>();
+
+
+	public Student(String name, String userID, String password) {
+		super(name, userID, password);
+		this.subjects = new ArrayList<>();	}
+
+	public ArrayList<Subject> getSubjects() {
+		return subjects;
 	}
 
-	public ArrayList<Subject> getMaterii() {
-		return materii;
-	}
-
-	public void setMaterii(ArrayList<Subject> materii) {
-		this.materii = materii;
+	public void setSubjects(ArrayList<Subject> subjects) {
+		this.subjects = subjects;
 	}
 
 	@Override
 	public String toString() {
-		return this.nume;
+		return this.name;
 	}
 
 	

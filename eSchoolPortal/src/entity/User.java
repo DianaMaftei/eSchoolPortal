@@ -1,26 +1,26 @@
 package entity;
 
 public abstract class User {
-	protected String nume;
-	protected String userName;
-	protected String parola;
+	protected String name;
+	protected String userID;
+	protected String password;
 	
-	public User(String nume, String userName, String parola) {
-		this.nume = nume;
-		this.userName = userName;
-		this.parola = parola;
+	public User(String name, String userID, String password) {
+		this.name = name;
+		this.userID = userID;
+		this.password = password;
 	}
 
-	public String getNume() {
-		return nume;
+	public String getName() {
+		return name;
 	}
 
-	public String getParola() {
-		return parola;
+	public String getPassword() {
+		return password;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUserID() {
+		return userID;
 	}
 	
 	

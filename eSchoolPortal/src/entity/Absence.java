@@ -1,42 +1,42 @@
 package entity;
 
-public class Absenta {
+public class Absence {
 
-	private String data;
+	private String date;
 	private boolean absent;
 	
-	public Absenta(String data) {
-		this.data = data;
+	public Absence(String date) {
+		this.date = date;
 		this.absent = true;
 	}
 
-	public String getData() {
-		return data;
+	public String getDate() {
+		return date;
 	}
 
 	public boolean isAbsent() {
 		return absent;
 	}
 
-	public void setAbsent(boolean valoare) {
-		this.absent = valoare;
+	public void setAbsent(boolean absent) {
+		this.absent = absent;
 	}
 	
 	
 	public String toString(){
-		return data;
+		return date;
 	}
 
 	@Override
 	public int hashCode() {
 		// TODO Auto-generated method stub
-		return data.hashCode();
+		return date.hashCode();
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		// TODO Auto-generated method stub
-		if((obj instanceof Absenta) && data.equals(((Absenta)obj).getData())){
+		if((obj instanceof Absence) && date.equals(((Absence)obj).getDate())){
 			return true;
 		}
 		return false;

@@ -2,35 +2,33 @@ package Service;
 
 import java.util.Scanner;
 
-import entity.Subject;
-import entity.Student;
 import entity.User;
 
 public class Login {
 	Scanner userInput = new Scanner(System.in);
-	String nume;
-	String parola;
+	String name;
+	String password;
 	static User currentUser;
 
-	public void afiseazaMeniuLogare() {
-		System.out.println("Bine ati venit! Tastati numele si parola pentru a va loga.");
-		nume = userInput.next();
-		parola = userInput.next();
+	public void displayLoginMenu() {
+		System.out.println("Welcome! Type your userID and password to login.");
+		name = userInput.next();
+		password = userInput.next();
 	}
 
 	public void doLogin() {
-		for (User user : eCatalogMain.currentDatabase.getUseri()) {
-			if (nume.equalsIgnoreCase(user.getUserName())) {
-				if (parola.equalsIgnoreCase(user.getParola())) {
-					System.out.println("Te-ai logat cu succes!");
+		for (User user : ePortalMain.currentDatabase.getUseri()) {
+			if (name.equalsIgnoreCase(user.getUserID())) {
+				if (password.equalsIgnoreCase(user.getPassword())) {
+					System.out.println("You've successfully logged in!");
 					currentUser = user;
 					return;
 				}
-				System.out.println("Parola incorecta!");
+				System.out.println("Invalid password. Please retry!");
 				return;
 			}
 		}
-		System.out.println("Username-ul nu exista.");
+		System.out.println("The userID is invalid.");
 	}
 
 	

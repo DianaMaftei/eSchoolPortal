@@ -5,14 +5,14 @@ import java.util.ArrayList;
 public class Subject {
 	private String name;
 	private String teacher;
-	private ArrayList<Nota> grades;
-	private ArrayList<Absenta> abscences;
+	private ArrayList<Grade> grades;
+	private ArrayList<Absence> absences;
 	
-	public Subject(String name, String teacher, ArrayList<Nota> grades, ArrayList<Absenta> abscences) {
+	public Subject(String name, String teacher, ArrayList<Grade> grades, ArrayList<Absence> absences) {
 		this.name = name;
 		this.teacher = teacher;
 		this.grades = grades;
-		this.abscences = abscences;
+		this.absences = absences;
 	}
 
 	public String getName() {
@@ -31,13 +31,13 @@ public class Subject {
 		this.teacher = teacher;
 	}
 
-	public ArrayList<Nota> getGrades() {
+	public ArrayList<Grade> getGrades() {
 		return grades;
 	}
 
 
-	public ArrayList<Absenta> getAbscences() {
-		return abscences;
+	public ArrayList<Absence> getAbsences() {
+		return absences;
 	}
 
 }
