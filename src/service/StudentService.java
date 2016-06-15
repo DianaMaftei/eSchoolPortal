@@ -1,30 +1,31 @@
-package Service;
+package service;
 
 import java.util.Scanner;
 
-import entity.Course;
-import entity.Student;
+import entities.Course;
+import entities.Student;
 
 public class StudentService {
 	private Scanner userInput = new Scanner(System.in);
 	private Student currentStudent = (Student) Login.currentUser;
+	
+	//TODO create interface for diplayUserMenu, implement in both Student and Teacher
 
-	public void afiseazaOptiuniVizualizare() {
+	//TODO finish userMenu - give user the choice
+	
+	public void displayUserMenu() {
 		System.out.println("For which course do you want to see the grades?");
 		System.out.println("For which course do you want to see the absences?");
 		System.out.println("For which course do you want to see the final grade?");
-
 		System.out.println("These are the course you are currently enrolled in: ");
 		for (Course m : currentStudent.getCourses()) {
 			System.out.println(m.getName());
 		}
 		String subject = userInput.next();
 		displayGrades(subject);
-
 		displayAbsences(subject);
 		displayFinalGrade(subject);
-
-		System.out.println("You are not enrolled in that course.");
+		//System.out.println("You are not enrolled in that course.");
 	}
 
 	public void displayGrades(String course) {
@@ -69,11 +70,9 @@ public class StudentService {
 				System.out.printf("Your final grade is: %.2f \n", total);
 				return;
 			}
-
 		}
-
 	}
-
+	//TODO do method displayAllData
 	public void displayAllData(){
 		
 	}

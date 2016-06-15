@@ -1,12 +1,12 @@
-package Service;
+package service;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import entity.Absence;
-import entity.Grade;
-import entity.Teacher;
-import entity.Student;
+import entities.Absence;
+import entities.Grade;
+import entities.Student;
+import entities.Teacher;
 
 public class TeacherService {
 	private Scanner userInput = new Scanner(System.in);
@@ -25,9 +25,10 @@ public class TeacherService {
 		}
 	}
 
-	public void displayAllGrades() {
+	// TODO finish display all grades - but for currently logged in teacher only
+	// - cannot see grades for other subjects
+	public void displayGradesForAllStudents() {
 		System.out.println("eSchoolPortal");
-
 		for (Student st : ePortalMain.currentDatabase.getStudentsList()) {
 			System.out.println(st.getName().toUpperCase());
 		}
@@ -41,7 +42,7 @@ public class TeacherService {
 		}
 	}
 
-	public void addGrade() {
+	public void addNewGradeToStudent() {
 		displayStudentsCurrentlyEnrolled();
 		System.out.println("For which student do you want to add a grade?");
 		String studentName = userInput.nextLine();
@@ -56,16 +57,16 @@ public class TeacherService {
 						indexDeMaterie = j;
 					}
 				}
-				// TODO get actual date
+				// TODO get actual real time date
 				student.getCourses().get(indexDeMaterie).getGrades().add(new Grade(nota, "today"));
 				return;
 			}
 		}
 		System.out.println("The student name is invalid.");
-
 	}
 
-	private void displayAbsences(Student student, int subjectIndex) {
+	//TODO merge this with the one from StudentService
+	private void displayStudentAbsences(Student student, int subjectIndex) {
 		for (int x = 0; x < student.getCourses().get(subjectIndex).getAbsences().size(); x++) {
 			if (student.getCourses().get(subjectIndex).getAbsences().get(x).isAbsent()) {
 				System.out.printf("%s ", student.getCourses().get(subjectIndex).getAbsences().get(x));
@@ -83,9 +84,10 @@ public class TeacherService {
 		ePortalMain.currentDatabase.getUseri().add(new Student(studentName, studentID, studentPassword));
 	}
 
-	public void displayAbsencesWithoutLeave() {
+	public void markAbsenceWithLeave() {
 		displayStudentsCurrentlyEnrolled();
 		System.out.println("For which student do you want to mark an absence \"with leave\"?");
+		//TODO have teacher type number, not full name
 		String studentName = userInput.nextLine();
 		for (int i = 0; i < yourStudents.size(); i++) {
 			if (studentName.equalsIgnoreCase(yourStudents.get(i).getName())) {
@@ -96,15 +98,17 @@ public class TeacherService {
 						subjectIndex = j;
 					}
 				}
-				displayAbsences(student, subjectIndex);
+				//TODO see if there are no absences
+				displayStudentAbsences(student, subjectIndex);
 				System.out.println();
 				System.out.println("Which absence do you want to mark? ");
+				//TODO have teacher select with number, not write the whole date
 				String date = userInput.next();
 				Absence absence = new Absence(date);
 				student.getCourses().get(subjectIndex).getAbsences()
 						.get(student.getCourses().get(subjectIndex).getAbsences().indexOf(absence)).setAbsent(false);
 				System.out.println("The absence has been marked \"with leave\".");
-				displayAbsences(student, subjectIndex);
+				displayStudentAbsences(student, subjectIndex);
 				return;
 			}
 		}

@@ -1,16 +1,15 @@
-package entity;
+package entities;
 
 import java.util.ArrayList;
 
-public class Student extends User{
-	
+public class Student extends User {
+
 	private ArrayList<Course> courses;
-
-
 
 	public Student(String name, String userID, String password) {
 		super(name, userID, password);
-		this.courses = new ArrayList<>();	}
+		this.courses = new ArrayList<>();
+	}
 
 	public ArrayList<Course> getCourses() {
 		return courses;
@@ -25,7 +24,4 @@ public class Student extends User{
 		return this.name;
 	}
 
-	
-	
-	
 }

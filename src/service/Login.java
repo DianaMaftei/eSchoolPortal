@@ -1,8 +1,8 @@
-package Service;
+package service;
 
 import java.util.Scanner;
 
-import entity.User;
+import entities.User;
 
 public class Login {
 	Scanner userInput = new Scanner(System.in);
@@ -10,13 +10,14 @@ public class Login {
 	String password;
 	static User currentUser;
 
-	public void displayLoginMenu() {
+	private void displayLoginMenu() {
 		System.out.println("Welcome! Type your userID and password to login.");
 		name = userInput.next();
 		password = userInput.next();
 	}
 
 	public void doLogin() {
+		displayLoginMenu();
 		for (User user : ePortalMain.currentDatabase.getUseri()) {
 			if (name.equalsIgnoreCase(user.getUserID())) {
 				if (password.equalsIgnoreCase(user.getPassword())) {
@@ -31,5 +32,4 @@ public class Login {
 		System.out.println("The userID is invalid.");
 	}
 
-	
 }

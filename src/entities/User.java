@@ -1,10 +1,10 @@
-package entity;
+package entities;
 
 public abstract class User {
 	protected String name;
 	protected String userID;
 	protected String password;
-	
+
 	public User(String name, String userID, String password) {
 		this.name = name;
 		this.userID = userID;
@@ -22,8 +22,5 @@ public abstract class User {
 	public String getUserID() {
 		return userID;
 	}
-	
-	
-	
-	
+
 }
